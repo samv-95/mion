@@ -1,0 +1,6 @@
+{
+  "name": "Aura AI",
+  "description": "An AI-powered everyday life assistant that orchestrates multi-intent tasks, products, services, and fulfillment through natural conversation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
