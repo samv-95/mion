@@ -65,11 +65,21 @@ Requirements: JDK 17+, Android SDK with **compileSdk 36 / build-tools** matching
 (see `gradle/libs.versions.toml`). A release build additionally needs `KEYSTORE_PATH`,
 `STORE_PASSWORD` and `KEY_PASSWORD` (see `app/build.gradle.kts`).
 
-A ready-made GitHub Actions recipe that produces an installable `app-debug.apk` artifact lives at
-[`docs/ci/build-apk.yml`](docs/ci/build-apk.yml) — copy it to `.github/workflows/build-apk.yml` and
-run it from the Actions tab (it is not active here because the token used for this branch has no
-`workflows` permission). It was written in an environment without access to Google's Maven
-repository, so treat its first run as the verification.
+### Get an installable APK without a local Android setup
+
+The quickest path is GitHub Actions, which has full network access to Google's Maven repository:
+
+1. Open **<https://github.com/samv-95/mion/new/arena/01a0b02b-mion?filename=.github/workflows/build-apk.yml>**
+   (or *Add file ▸ Create new file* while on the `arena/01a0b02b-mion` branch) and name it
+   `.github/workflows/build-apk.yml`.
+2. Paste the contents of [`docs/ci/build-apk.yml`](docs/ci/build-apk.yml) and commit.
+3. Go to **Actions ▸ Build debug APK ▸ Run workflow** (<https://github.com/samv-95/mion/actions>).
+   When the run finishes, the APK is under **Artifacts ▸ `aura-ai-apk`** on the run page
+   (artifact downloads require being signed in to GitHub).
+
+The template is not active in this repository because the automation token that created this branch
+has no `workflows` permission, so it could not be pushed to `.github/workflows/`. Its first run is
+the real verification — it was written in an environment without access to Google's Maven repository.
 
 Builds need network access to `dl.google.com`, `maven.google.com`, `repo.maven.apache.org` and
 `services.gradle.org`; the sandbox this preview was prepared in blocks those hosts, which is why the
