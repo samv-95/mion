@@ -14,6 +14,7 @@ browser without an Android build.
 | `npm run test` | Vitest + Testing Library smoke tests that drive the real UI |
 | `npm run build` | `tsc --noEmit` + production bundle in `dist/` |
 | `npm run preview` | serve the production bundle |
+| `npm run build:standalone` | one self-contained HTML file (JS + CSS + fonts inlined) → `web/standalone/aura-ai-app.html` and `docs/aura-ai-app.html` |
 | `npm run emoji:subset` | rebuild `src/assets/noto-color-emoji-subset.woff2` (`pip install fonttools brotli` first) |
 
 ## Layout
@@ -45,3 +46,12 @@ src/
 Everything is bundled locally (no CDN calls, so the preview works offline and behind the sandbox
 proxy): Vazirmatn for Latin + Persian copy, Material Symbols Outlined for icons, and a 27 KB
 subset of Noto Color Emoji for the ✅ 📦 🔧 🚚 ⚙️ ⚡ 💡 ⭐ 📍 glyphs used in the interface.
+
+## Standalone single-file build
+
+`npm run build:standalone` produces **`aura-ai-app.html`** (~1.4 MB): the whole app — React bundle,
+styles, Vazirmatn, icons and the colour-emoji subset — inlined into one file with **no external
+requests at all**. Open it by double-clicking, send it over messenger, or drop it on a phone; it
+works offline. The committed copy lives at [`../docs/aura-ai-app.html`](../docs/aura-ai-app.html)
+(verified with headless Chromium loaded over `file://` with all network access blocked: 0 blocked
+requests, 0 console errors, the 4-intent `$508` plan and the operational map all working).

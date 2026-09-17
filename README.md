@@ -47,8 +47,14 @@ npm run build        # type-check + production bundle into web/dist
 npm run emoji:subset # regenerate the subsetted colour-emoji font (needs: pip install fonttools brotli)
 ```
 
-Rendered screenshots of every screen are in [`web/screenshots`](web/screenshots) (captured from the
-web preview with headless Chromium).
+### Outputs you can look at right now
+
+| Output | Where |
+| --- | --- |
+| **Live preview** (runs here, open it on your phone too) | the LIVE PREVIEW panel of this session — dev server on `0.0.0.0:5173` |
+| **Single-file app** — the whole app in one offline HTML file, no server needed | [`docs/aura-ai-app.html`](docs/aura-ai-app.html) (1.4 MB, `npm run build:standalone`, verified offline with 0 network requests) |
+| **Screenshots** of all five tabs | [`web/screenshots`](web/screenshots) |
+| **Installable APK** | see *Get an installable APK* below — not built here because this sandbox cannot reach Google's Maven repository |
 
 ## Build the Android app
 
